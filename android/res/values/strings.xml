@@ -11,4 +11,5 @@
     <string name="stopped">Stopped</string>
     <string name="service_on">Service ON</string>
     <string name="service_off">Service OFF</string>
+    <string name="TestQuery">TestQuery</string>
 </resources>

@@ -1,4 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    menu_TempMaxmenu_TempMaxmenu_TempMaxmenu_TempMaxmenu_TempMaxmenu_TempMaxmenu_TempMax
+    <item
+        android:id="@+id/menu_TestQuery"
+        android:title="@string/TestQuery">
+        <menu>
+            <item
+                android:id="@+id/menu_GyrMax"
+                android:title="GyrMax"/>
 
+            <group
+                android:id="@+id/menugroup_Acc"
+                android:menuCategory="container" >
+                <item
+                    android:id="@+id/menu_AccMax"
+                    android:title="AccMax"/>
+                <item
+                    android:id="@+id/menu_AccMin"
+                    android:title="AccMin"/>
+            </group>
+
+            <item
+                android:id="@+id/menu_TempMax"
+                android:title="TempMax"/>
+        </menu>
+    </item>
 
 </menu>
