@@ -24,6 +24,8 @@ import java.util.TimerTask;
 import java.io.FileInputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import ch.eth.soms.mosgap.nervous.R;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -208,19 +210,20 @@ public class MainActivity extends Activity {
 		new Timer().schedule(new TimerTask() {
 			@Override
 			public void run() {
-				final String str;
-				if (serviceRunning) {
-					str = "Service started. \nStarted at: "
-							+ info.getTimeOfFirstFrame()
-							+ " \nFrames gathered: " + info.getAmountOfFrames()
-							+ "\nFile size: " + info.getFileSize() + " Bytes";
-				} else {
-					str = "Service stopped.";
+				final StringBuilder strBuf = new StringBuilder(
+						"Service started. \nStarted at: "
+								+ info.getTimeOfFirstFrame()
+								+ " \nFrames gathered: "
+								+ info.getAmountOfFrames() + "\nFile size: "
+								+ info.getFileSize() + " Bytes");
+				if (!serviceRunning) {
+					strBuf.append("\n\nService stopped.");
 				}
 
 				runOnUiThread(new Runnable() {
 					@Override
 					public void run() {
+						final String str = strBuf.toString();
 						buttonOnOff.setChecked(serviceRunning);
 						textStatus.setText(str); // Runs on UI Thread
 					}

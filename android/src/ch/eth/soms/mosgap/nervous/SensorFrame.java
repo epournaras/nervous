@@ -7,7 +7,8 @@ public class SensorFrame {
 
 	SensorFrame(SensorHeader sensorHeader) {
 		this.sensorHeader = sensorHeader;
-		this.sensorDataArr = new SensorData[sensorHeader.getSensorDataClasses().size()];
+		this.sensorDataArr = new SensorData[sensorHeader.getSensorDataClasses()
+				.size()];
 	}
 
 	public String toString() {
@@ -20,7 +21,8 @@ public class SensorFrame {
 
 	public void addSensorData(SensorData sensorData) {
 		int i = 0;
-		for (Class<? extends SensorData> sensorDataClass : sensorHeader.getSensorDataClasses()) {
+		for (Class<? extends SensorData> sensorDataClass : sensorHeader
+				.getSensorDataClasses()) {
 			if (sensorData.getClass().equals(sensorDataClass)) {
 				sensorDataArr[i] = sensorData;
 				break;
@@ -32,7 +34,8 @@ public class SensorFrame {
 	public boolean isComplete() {
 		boolean complete = true;
 		int i = 0;
-		for (boolean sensorTypeListener : sensorHeader.getSensorTypeListenerList()) {
+		for (boolean sensorTypeListener : sensorHeader
+				.getSensorTypeListenerList()) {
 			if (sensorTypeListener) {
 				complete = complete && (sensorDataArr[i] != null);
 			}
