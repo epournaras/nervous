@@ -1,5 +1,9 @@
 package ch.eth.soms.mosgap.nervous;
 
+import java.util.ArrayList;
+
+import android.util.Log;
+
 public class SensorDataBattery extends SensorData {
 
 	private final float batteryPercent;
@@ -7,7 +11,9 @@ public class SensorDataBattery extends SensorData {
 	private final boolean isUsbCharge;
 	private final boolean isAcCharge;
 
-	public SensorDataBattery(final long timestamp, float batteryPercent, final boolean isCharging, final boolean isUsbCharge, final boolean isAcCharge) {
+	public SensorDataBattery(final long timestamp, float batteryPercent,
+			final boolean isCharging, final boolean isUsbCharge,
+			final boolean isAcCharge) {
 		super(timestamp);
 		this.batteryPercent = batteryPercent;
 		this.isCharging = isCharging;
@@ -16,15 +22,21 @@ public class SensorDataBattery extends SensorData {
 	}
 
 	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(String.valueOf(getTimestamp()) + ";batteryPercent;" + String.valueOf(batteryPercent) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";isCharging;" + String.valueOf(isCharging ? 1 : 0) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";isUsbCharge;" + String.valueOf(isUsbCharge ? 1 : 0) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";isAcCharge;" + String.valueOf(isAcCharge ? 1 : 0) + "\n");
-		return sb.toString();
+	public String getSensorIdentifier() {
+		return "batt";
 	}
 
+	@Override
+	public String toString() {
+		ArrayList<String> values = new ArrayList<String>();
+		values.add(getTimestamp() + "");
+		values.add(getSensorIdentifier());
+		values.add(String.valueOf(batteryPercent));
+		values.add(String.valueOf(isCharging ? 1 : 0));
+		values.add(String.valueOf(isUsbCharge ? 1 : 0));
+		values.add(String.valueOf(isAcCharge ? 1 : 0));
+		return StringUtility.separate(values, ";");
+	}
 
 	public float getBatteryPercent() {
 		return batteryPercent;

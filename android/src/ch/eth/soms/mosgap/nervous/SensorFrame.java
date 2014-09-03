@@ -14,7 +14,7 @@ public class SensorFrame {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		for (SensorData sensorData : sensorDataArr) {
-			sb.append(sensorData.toString());
+				sb.append(sensorData.toString() + "\n");
 		}
 		return sb.toString();
 	}

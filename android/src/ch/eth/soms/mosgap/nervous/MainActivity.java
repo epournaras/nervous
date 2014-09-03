@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 				PendingIntent.FLAG_UPDATE_CURRENT);
 
 		// 30 seconds
-		long interval = 30 * 1000;
+		long interval = 1 * 1000;
 
 		scheduler.setInexactRepeating(AlarmManager.RTC_WAKEUP,
 				System.currentTimeMillis(), interval, scheduledIntent);

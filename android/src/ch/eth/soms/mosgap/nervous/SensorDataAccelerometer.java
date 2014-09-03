@@ -1,12 +1,17 @@
 package ch.eth.soms.mosgap.nervous;
 
+import java.util.ArrayList;
+
+import android.util.Log;
+
 public class SensorDataAccelerometer extends SensorData {
 	private final int accuracy;
 	private final float accX;
 	private final float accY;
 	private final float accZ;
 
-	public SensorDataAccelerometer(final long timestamp, final int accuracy, final float accX, final float accY, final float accZ) {
+	public SensorDataAccelerometer(final long timestamp, final int accuracy,
+			final float accX, final float accY, final float accZ) {
 		super(timestamp);
 		this.accuracy = accuracy;
 		this.accX = accX;
@@ -15,13 +20,21 @@ public class SensorDataAccelerometer extends SensorData {
 	}
 
 	@Override
+	public String getSensorIdentifier() {
+		return "acc";
+	}
+	private static final String DEBUG_TAG = "SensorService";
+	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(String.valueOf(getTimestamp()) + ";accAccuracy;" + String.valueOf(accuracy) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";accX;" + String.valueOf(accX) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";accY;" + String.valueOf(accY) + "\n");
-		sb.append(String.valueOf(getTimestamp()) + ";accZ;" + String.valueOf(accZ) + "\n");
-		return sb.toString();
+		ArrayList<String> values = new ArrayList<String>();
+		values.add(getTimestamp() + "");
+		values.add(getSensorIdentifier());
+		values.add(String.valueOf(accuracy));
+		values.add(String.valueOf(accX));
+		values.add(String.valueOf(accY));
+		values.add(String.valueOf(accZ));
+		Log.d(DEBUG_TAG, "Accelerometer Value: " + StringUtility.separate(values, ";"));
+		return StringUtility.separate(values, ";");
 	}
 
 	public int getAccuracy() {

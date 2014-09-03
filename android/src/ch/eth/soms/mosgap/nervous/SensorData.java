@@ -15,10 +15,7 @@ public abstract class SensorData {
 		return null;
 	}
 	
-	
-	public static String getSensorIdentifier() {
-		return null;
-	}
+	public abstract String getSensorIdentifier();
 
 	public long getTimestamp() {
 		return timestamp;
