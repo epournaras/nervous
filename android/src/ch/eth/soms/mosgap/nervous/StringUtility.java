@@ -4,15 +4,26 @@ import java.util.ArrayList;
 
 public class StringUtility {
 
+	/**
+	 * Separates all values with the given separator. <br>
+	 * Example <br>
+	 * <b>Input: </b> values = {"a","b","c","d"} <br>
+	 * separator = "_"<br>
+	 * <b>Output: </b>
+	 * "a_b_c_d"
+	 * 
+	 * @param values
+	 * @param separator
+	 * @return
+	 */
 	public static String separate(ArrayList<String> values, String separator) {
 		StringBuilder sb = new StringBuilder();
-		if (values == null || values.isEmpty()) {
-		} else {
+		if (values != null && !values.isEmpty()) {
 			for (String value : values) {
 				sb.append(value + separator);
 			}
-			int length = sb.length();
-			sb.delete(length - separator.length(), length);
+			int total_length = sb.length();
+			sb.delete(total_length - separator.length(), total_length);
 		}
 
 		return sb.toString();
