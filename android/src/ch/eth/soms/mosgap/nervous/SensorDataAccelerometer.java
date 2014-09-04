@@ -23,6 +23,18 @@ public class SensorDataAccelerometer extends SensorData {
 	public String getSensorIdentifier() {
 		return "acc";
 	}
+	
+	@Override
+	public ArrayList<String> getSensorValuesDescription() {
+		ArrayList<String> values = new ArrayList<>();
+		values.add(getSensorIdentifier());
+		values.add("accuracy");
+		values.add("x");
+		values.add("y");
+		values.add("z");
+		return values;
+	}
+	
 	private static final String DEBUG_TAG = "SensorService";
 	@Override
 	public String toString() {

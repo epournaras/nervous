@@ -239,6 +239,31 @@ public class SensorService extends Service implements SensorEventListener {
 			return null;
 		}
 
+		private void createSensorHeaderFile(boolean toSdCard) {
+			BufferedWriter bufWr = null;
+			final String file_name = "SensorHeader.txt";
+			File file = null;
+			if (!toSdCard) {
+				// Write to App Folder
+				file = new File(getApplicationContext().getFilesDir(),
+						file_name);
+			} else {
+				String sdCardLoc = Environment.getExternalStorageDirectory()
+						.getAbsolutePath();
+				File dir = new File(sdCardLoc + "/nervous");
+				dir.mkdirs();
+				file = new File(dir, file_name);
+			}
+
+			try {
+				bufWr = new BufferedWriter(new FileWriter(file, false));
+				bufWr.append(sensorHeader.toString());
+				bufWr.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
 		private void originalWriteToSDCard(SensorFrame... frames) {
 			SensorFrame frame = frames[0];
 
@@ -252,13 +277,13 @@ public class SensorService extends Service implements SensorEventListener {
 					bufWr = new BufferedWriter(new FileWriter(file, true));
 
 				} else {
+					createSensorHeaderFile(false);
+
 					file.createNewFile();
 					Log.d(DEBUG_TAG, "New log file created (" + file.getName()
 							+ ")");
 					// Append to existing file
 					bufWr = new BufferedWriter(new FileWriter(file, false));
-					// Write header
-					bufWr.append(sensorHeader.toString());
 				}
 				// Write frame
 				bufWr.append(sensorFrame.toString());
@@ -310,13 +335,12 @@ public class SensorService extends Service implements SensorEventListener {
 					bufWr = new BufferedWriter(new FileWriter(file, true));
 
 				} else {
+					createSensorHeaderFile(true);
 					file.createNewFile();
 					Log.d(DEBUG_TAG, "New log file created (" + file.getName()
 							+ ")");
 					// Append to existing file
 					bufWr = new BufferedWriter(new FileWriter(file, false));
-					// Write header
-					bufWr.append(sensorHeader.toString());
 				}
 				// Write frame
 				bufWr.append(sensorFrame.toString());

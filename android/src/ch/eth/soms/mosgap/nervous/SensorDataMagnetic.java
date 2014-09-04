@@ -23,6 +23,17 @@ public class SensorDataMagnetic extends SensorData {
 	}
 
 	@Override
+	public ArrayList<String> getSensorValuesDescription() {
+		ArrayList<String> values = new ArrayList<>();
+		values.add(getSensorIdentifier());
+		values.add("accuracy");
+		values.add("x");
+		values.add("y");
+		values.add("z");
+		return values;
+	}
+	
+	@Override
 	public String toString() {
 		ArrayList<String> values = new ArrayList<String>();
 		values.add(getTimestamp() + "");

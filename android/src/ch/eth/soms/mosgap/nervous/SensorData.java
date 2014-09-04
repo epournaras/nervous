@@ -1,5 +1,7 @@
 package ch.eth.soms.mosgap.nervous;
 
+import java.util.ArrayList;
+
 public abstract class SensorData {
 	
 	private final long timestamp;
@@ -17,6 +19,8 @@ public abstract class SensorData {
 	
 	public abstract String getSensorIdentifier();
 
+	public abstract ArrayList<String> getSensorValuesDescription();
+	
 	public long getTimestamp() {
 		return timestamp;
 	}

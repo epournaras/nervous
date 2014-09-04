@@ -1,6 +1,7 @@
 package ch.eth.soms.mosgap.nervous;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class StringUtility {
 
@@ -12,14 +13,14 @@ public class StringUtility {
 	 * <b>Output: </b>
 	 * "a_b_c_d"
 	 * 
-	 * @param values
+	 * @param list
 	 * @param separator
 	 * @return
 	 */
-	public static String separate(ArrayList<String> values, String separator) {
+	public static String separate(List<String> list, String separator) {
 		StringBuilder sb = new StringBuilder();
-		if (values != null && !values.isEmpty()) {
-			for (String value : values) {
+		if (list != null && !list.isEmpty()) {
+			for (String value : list) {
 				sb.append(value + separator);
 			}
 			int total_length = sb.length();

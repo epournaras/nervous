@@ -27,6 +27,17 @@ public class SensorDataBattery extends SensorData {
 	}
 
 	@Override
+	public ArrayList<String> getSensorValuesDescription() {
+		ArrayList<String> values = new ArrayList<>();
+		values.add(getSensorIdentifier());
+		values.add("percent");
+		values.add("isCharging");
+		values.add("isUsbCharging");
+		values.add("isAcCharging");
+		return values;
+	}
+	
+	@Override
 	public String toString() {
 		ArrayList<String> values = new ArrayList<String>();
 		values.add(getTimestamp() + "");

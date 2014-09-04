@@ -19,6 +19,15 @@ public class SensorDataProximity extends SensorData {
 	}
 
 	@Override
+	public ArrayList<String> getSensorValuesDescription() {
+		ArrayList<String> values = new ArrayList<>();
+		values.add(getSensorIdentifier());
+		values.add("accuracy");
+		values.add("proximity");
+		return values;
+	}
+	
+	@Override
 	public String toString() {
 		ArrayList<String> values = new ArrayList<String>();
 		values.add(getTimestamp() + "");
