@@ -20,7 +20,7 @@ public class SensorDataLight extends SensorData {
 
 	@Override
 	public ArrayList<String> getSensorValuesDescription() {
-		ArrayList<String> values = new ArrayList<>();
+		ArrayList<String> values = new ArrayList<String>();
 		values.add(getSensorIdentifier());
 		values.add("accuracy");
 		values.add("light");
