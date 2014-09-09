@@ -4,14 +4,15 @@ import java.util.ArrayList;
 
 public abstract class SensorData {
 	
-	private final long timestamp;
-
+	protected long timestamp;
+	
 	public abstract String toString();
 	
 	public SensorData(final long timestamp)
 	{
 		this.timestamp = timestamp;
 	}
+	
 	
 	public static String[] getDataColumns() {
 		return null;
